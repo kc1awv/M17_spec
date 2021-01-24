@@ -113,7 +113,7 @@ htmlhelp_basename = 'M17ProtocolSpecificationdoc'
 
 # -- Options for LaTeX output ------------------------------------------------
 
-latex_engine = 'pdflatex'
+latex_engine = 'xelatex'
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').

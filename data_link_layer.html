@@ -1,0 +1,759 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Data Link Layer &mdash; M17 Protocol Specification  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Application Layer" href="application_layer.html" />
+    <link rel="prev" title="Physical Layer" href="physical_layer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> M17 Protocol Specification
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physical_layer.html">Physical Layer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Link Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stream-mode">Stream Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sync-burst">Sync Burst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#link-setup-frame">Link setup frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subsequent-frames">Subsequent frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#superframes">Superframes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crc">CRC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#packet-mode">Packet Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Link Setup Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#packet-format">Packet Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convolutional-coding">Convolutional Coding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#carrier-sense-multiple-access">Carrier-sense Multiple Access</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="application_layer.html">Application Layer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Part II - Codeplug:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="codeplug.html">Recommendation for the codeplug structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="address_encoding.html">Address Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorrelator.html">Decorrelator sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interleaving.html">Interleaving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_encapsulation.html">M17 Internet Protocol (IP) Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kiss_protocol.html">KISS Protocol</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">M17 Protocol Specification</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Data Link Layer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/data_link_layer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-link-layer">
+<h1>Data Link Layer<a class="headerlink" href="#data-link-layer" title="Permalink to this headline">¶</a></h1>
+<p>The Data Link layer is split into two modes:</p>
+<p>#. Packet mode: data are sent in small bursts, on the order of 100s to 1000s of bytes at a time, after
+which the physical layer stops sending data. eg: messages, beacons, etc.
+#. Stream mode: data are sent in a continuous stream for an indefinite amount of time, with no
+break in physical layer output, until the stream ends. eg: voice data, bulk data transfers, etc.</p>
+<p>When the physical layer is idle (no RF being transmitted or received),
+the data link defaults to packet mode. ~~To switch to stream mode, a
+start stream packet (detailed later) is sent, immediately followed by
+the switch to stream mode; the Stream of data immediately follows the
+Start Stream packet without disabling the Physical layer. To switch
+out of Stream mode, the stream simply ends and returns the Physical
+layer to the idle state, and the Data Link defaults back to Packet
+mode.~~</p>
+<p>As is the convention with networking protocols, all quantities
+larger than 8 bits are encoded in bigendian.</p>
+<div class="section" id="stream-mode">
+<h2>Stream Mode<a class="headerlink" href="#stream-mode" title="Permalink to this headline">¶</a></h2>
+<p>In Stream Mode, an <em>indefinite</em> amount of payload data is sent continuously without breaks in the
+physical layer. The <em>stream</em> is broken up into parts, called <em>frames</em> to not confuse them with <em>packets</em> sent
+in packet mode. Frames contain payload data interleaved with frame signalling (similar to packets).
+Frame signalling is contained within the <strong>Link Information Channel (LICH)</strong>.</p>
+<div class="section" id="sync-burst">
+<h3>Sync Burst<a class="headerlink" href="#sync-burst" title="Permalink to this headline">¶</a></h3>
+<p>All frames are preceded by a 16-bit <em>synchronization burst</em>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Link setup frames shall be preceded with 0x55F7.</p></li>
+<li><p>Stream frames shall be preceeded with 0xFF5D.</p></li>
+<li><p>Packet frames shall be preceeded with 0x75FF.</p></li>
+</ul>
+</div></blockquote>
+<p>All syncwords are type 4 bits.</p>
+<p>These sync words are based on <a class="reference external" href="https://en.wikipedia.org/wiki/Barker_code">Barker codes</a>.  The sequence 0xDF55 (symbols -3 +3 -3 -3 +3 +3 +3 +3) is reserved.</p>
+</div>
+<div class="section" id="link-setup-frame">
+<h3>Link setup frame<a class="headerlink" href="#link-setup-frame" title="Permalink to this headline">¶</a></h3>
+<p>First frame of the transmission contains full LSF data. It’s called
+the <strong>Link Setup Frame (LSF)</strong>, and is not part of any superframes.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Link setup frame fields</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>DST</p></td>
+<td><p>48 bits</p></td>
+<td><p>Destination address - Encoded callsign or a special number (eg. a group)</p></td>
+</tr>
+<tr class="row-even"><td><p>SRC</p></td>
+<td><p>48 bits</p></td>
+<td><p>Source address - Encoded callsign of the originator or a
+special number (eg. a group)</p></td>
+</tr>
+<tr class="row-odd"><td><p>TYPE</p></td>
+<td><p>16 bits</p></td>
+<td><p>Information about the incoming data stream</p></td>
+</tr>
+<tr class="row-even"><td><p>NONCE</p></td>
+<td><p>112 bits</p></td>
+<td><p>Nonce for encryption</p></td>
+</tr>
+<tr class="row-odd"><td><p>CRC</p></td>
+<td><p>16 bits</p></td>
+<td><p>CRC for the link setup data</p></td>
+</tr>
+<tr class="row-even"><td><p>TAIL</p></td>
+<td><p>4 bits</p></td>
+<td><p>Flushing bits for the convolutional encoder that do not carry any information</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Bitfields of type field</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Packet/stream indicator, 0=packet, 1=stream</p></td>
+</tr>
+<tr class="row-odd"><td><p>1-2</p></td>
+<td><p>Data type indicator, <span class="math notranslate nohighlight">\(01_2\)</span> =data (D), <span class="math notranslate nohighlight">\(10_2\)</span> =voice
+(V), <span class="math notranslate nohighlight">\(11_2\)</span> =V+D, <span class="math notranslate nohighlight">\(00_2\)</span> =reserved</p></td>
+</tr>
+<tr class="row-even"><td><p>3-4</p></td>
+<td><p>Encryption type, <span class="math notranslate nohighlight">\(00_2\)</span> =none, <span class="math notranslate nohighlight">\(01_2\)</span> =AES,
+<span class="math notranslate nohighlight">\(10_2\)</span> =scrambling, <span class="math notranslate nohighlight">\(11_2\)</span> =other/reserved</p></td>
+</tr>
+<tr class="row-odd"><td><p>5-6</p></td>
+<td><p>Encryption subtype (meaning of values depends on encryption type)</p></td>
+</tr>
+<tr class="row-even"><td><p>7-15</p></td>
+<td><p>Reserved (don’t care)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The fields in Table 3 (except tail) form initial LSF. It contains all
+information needed to establish M17 link. Later in the transmission,
+the initial LSF is divided into 6 “chunks” and transmitted
+interleaved with data. The purpose of that is to allow late-joiners to
+receive the LICH at any point of the transmission. The process of
+collecting full LSF takes 6 frames or 6*40 ms = 240 ms. Four TAIL
+bits are needed for the convolutional coder to go back to state 0, so
+also the ending trellis position is known.</p>
+<p>Voice coder rate is inferred from TYPE field, bits 1 and 2.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Voice coder rates for different data type indicators</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Data type indicator</p></th>
+<th class="head"><p>Voice coder rate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(00_2\)</span></p></td>
+<td><p>none/reserved</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(01_2\)</span></p></td>
+<td><p>no voice</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(10_2\)</span></p></td>
+<td><p>3200 bps</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(11_2\)</span></p></td>
+<td><p>1600 bps</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="subsequent-frames">
+<h3>Subsequent frames<a class="headerlink" href="#subsequent-frames" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Fields for frames other than the link setup frame</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>LICH</p></td>
+<td><p>48 bits</p></td>
+<td><p>LSF chunk, one of 6</p></td>
+</tr>
+<tr class="row-even"><td><p>FN</p></td>
+<td><p>16 bits</p></td>
+<td><p>Frame number, starts from 0 and increments every frame to a max of 0x7fff where it will then wrap back to 0. High bit set indicates this frame is the last of the stream.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PAYLOAD</p></td>
+<td><p>128 bits</p></td>
+<td><p>Payload/data, can contain arbitrary data</p></td>
+</tr>
+<tr class="row-even"><td><p>CRC</p></td>
+<td><p>16 bits</p></td>
+<td><p>This field contains 16-bit value used to check data integrity, see section 2.4 for details</p></td>
+</tr>
+<tr class="row-odd"><td><p>TAIL</p></td>
+<td><p>4 bits</p></td>
+<td><p>Flushing bits for the convolutional encoder that don’t carry any information</p></td>
+</tr>
+</tbody>
+</table>
+<p>The most significant bit in the FN counter is used for transmission
+end signalling. When transmitting the last frame, it shall be set to 1
+(one).</p>
+<p>The payload is used so that earlier data in the voice stream is sent first.
+For mixed voice and data payloads, the voice data is stored first, then the data.</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">LSF chunk structure</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0..39</p></td>
+<td><p>40 bits of full LSF</p></td>
+</tr>
+<tr class="row-odd"><td><p>40..42</p></td>
+<td><p>A modulo 6 counter (LICH_CNT) for LICH re-assembly</p></td>
+</tr>
+<tr class="row-even"><td><p>43..47</p></td>
+<td><p>5-bit Color Code (CC)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">Payload example 1</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>Codec2 encoded frame t + 0</p></td>
+<td colspan="2"><p>Codec2 encoded frame t + 1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Table 9 </span><span class="caption-text">Payload Example 2</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>Codec2 encoded frame t + 0</p></td>
+<td colspan="2"><p>Mixed data t + 0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="superframes">
+<h3>Superframes<a class="headerlink" href="#superframes" title="Permalink to this headline">¶</a></h3>
+<p>Each frame contains a chunk of the LSF frame that was used to
+establish the stream. Frames are grouped into superframes, which is
+the group of 6 frames that contain everything needed to rebuild the
+original LSF packet, so that the user who starts listening in the
+middle of a stream (late-joiner) is eventually able to reconstruct the
+LSF message and understand how to receive the in-progress stream.</p>
+<div class="figure align-default" id="id10">
+<img alt="_images/M17_stream.png" src="_images/M17_stream.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Stream consisting of one superframe</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id11">
+<div class="graphviz"><img src="_images/graphviz-3db0b3762f829ea1d9ec02ff25bfc12ecb86c1ac.png" alt="digraph D{
+  size=&quot;4,6&quot;;
+  node [shape=record];
+  {rank=same c0 c1 golay_24_12}
+  {rank=same p0 p1}
+  {rank=same i0 i1}
+
+  c0[label=&quot;conv coder&quot;]
+  p0[label=&quot;Puncture P1&quot;]
+  i0[label=&quot;interleave&quot;]
+  w0[label=&quot;decorrelator&quot;]
+  s0[label=&quot;add sync&quot;]
+  chunker_48[label=&quot;chunk 48 bits&quot;]
+  golay_24_12[label=&quot;golay(24, 12)&quot;]
+
+  c1[label=&quot;conv coder&quot;]
+  p1[label=&quot;Puncture P2&quot;]
+  i1[label=&quot;interleave&quot;]
+  w1[label=&quot;decorrelator&quot;]
+  s1[label=&quot;add sync&quot;]
+  fn[label=&quot;Add FN&quot;]
+  chunker_128[label=&quot;chunk 128 bits&quot;]
+
+  framecomb[label=&quot;Frame Combiner&quot;]
+  supercomb[label=&quot;Superframe Combiner&quot;]
+
+  LSF -&gt; c0 -&gt; p0 -&gt; i0 -&gt; w0 -&gt; s0 -&gt; supercomb
+  LSF -&gt; chunker_48 -&gt; golay_24_12 -&gt; framecomb
+  data -&gt; chunker_128 -&gt; fn -&gt; CRC -&gt; c1 -&gt; p1 -&gt; framecomb
+  framecomb -&gt; i1 -&gt; w1 -&gt; s1 -&gt; supercomb
+  Preamble -&gt; supercomb
+}" class="graphviz" /></div>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">An overview of the forward dataflow</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="crc">
+<h3>CRC<a class="headerlink" href="#crc" title="Permalink to this headline">¶</a></h3>
+<p>M17 uses a non-standard version of 16-bit CRC with polynomial
+<span class="math notranslate nohighlight">\(x^{16} + x^{14} + x^{12} + x^{11} + x^8 + x^5 + x^4 + x^2 + 1\)</span> or
+0x5935 and initial value of 0xFFFF. This polynomial allows for
+detecting all errors up to hamming distance of 5 with payloads up to
+241 bits <a class="footnote-reference brackets" href="#koopman" id="id1">1</a>, which is less than the amount of data in each frame.</p>
+<dl class="footnote brackets">
+<dt class="label" id="koopman"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://users.ece.cmu.edu/~koopman/crc/">https://users.ece.cmu.edu/~koopman/crc/</a> has this listed
+as 0xAC9A, which is the reversed reciprocal notation</p>
+</dd>
+</dl>
+<p>As M17’s native bit order is most significant bit first, neither the
+input nor the output of the CRC algorithm gets reflected.</p>
+<p>The input to the CRC algorithm consists of the 16 bits of FN and 128
+bits of payload, and then depending on whether the CRC is being computed
+or verified either 16 zero bits or the received CRC.</p>
+<p>The test vectors in Table 6 are calculated by feeding the given
+message and then 16 zero bits to the CRC algorithm.</p>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-number">Table 10 </span><span class="caption-text">CRC test vectors</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Message</p></th>
+<th class="head"><p>CRC output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>(empty string)</p></td>
+<td><p>0xFFFF</p></td>
+</tr>
+<tr class="row-odd"><td><p>ASCII string “A”</p></td>
+<td><p>0x206E</p></td>
+</tr>
+<tr class="row-even"><td><p>ASCII string “123456789”</p></td>
+<td><p>0x772B</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bytes from 0x00 to 0xFF</p></td>
+<td><p>0x1C31</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="packet-mode">
+<h2>Packet Mode<a class="headerlink" href="#packet-mode" title="Permalink to this headline">¶</a></h2>
+<p>In <em>packet mode</em>, a finite amount of payload data (for example – text
+messages or application layer data) is wrapped with a packet, sent
+over the physical layer, and is completed when done. ~~Any
+acknowledgement or retransmission is done at the application
+layer.~~</p>
+<div class="section" id="id2">
+<h3>Link Setup Frame<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Packet mode uses the same link setup frame that has been defined for stream mode above.
+The packet/stream indicator is set to 0 in the type field.</p>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-number">Table 11 </span><span class="caption-text">Bitfields of type field</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Packet/stream indicator, 0=packet, 1=stream</p></td>
+</tr>
+<tr class="row-odd"><td><p>1-2</p></td>
+<td><p>Data type indicator, <span class="math notranslate nohighlight">\(01_2\)</span> =raw (D), <span class="math notranslate nohighlight">\(10_2\)</span> =encapsulated
+(V), <span class="math notranslate nohighlight">\(11_2\)</span> =reserved, <span class="math notranslate nohighlight">\(00_2\)</span> =reserved</p></td>
+</tr>
+<tr class="row-even"><td><p>3-4</p></td>
+<td><p>Encryption type, <span class="math notranslate nohighlight">\(00_2\)</span> =none, <span class="math notranslate nohighlight">\(01_2\)</span> =AES,
+<span class="math notranslate nohighlight">\(10_2\)</span> =scrambling, <span class="math notranslate nohighlight">\(11_2\)</span> =other/reserved</p></td>
+</tr>
+<tr class="row-odd"><td><p>5-6</p></td>
+<td><p>Encryption subtype (meaning of values depends on encryption type)</p></td>
+</tr>
+<tr class="row-even"><td><p>7-15</p></td>
+<td><p>Reserved (don’t care)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Raw packet frames have no packet type metadata associated with them.  Encapsulated packet
+format is discussed in <a class="reference internal" href="application_layer.html#packet-superframes"><span class="std std-ref">Packet Superframes</span></a> in the Application Layer section.  This
+provides data type information and is the preferred format for use on M17.</p>
+<p>Currently the contents of the source and destination fields are arbitrary as no behavior
+is defined which depends on the content of these fields.  The only requirement is that
+the content is base-40 encoded.</p>
+</div>
+<div class="section" id="packet-format">
+<h3>Packet Format<a class="headerlink" href="#packet-format" title="Permalink to this headline">¶</a></h3>
+<p>M17 packet mode can transmit up to 798 bytes of payload data.  It acheives a base throughput
+of 5kbps, and a net throughput of about 4.7kbps for the largest data payload, and over 3kbps
+for 100-byte payloads.  (Net throughput takes into account preamble and link setup overhead.)</p>
+<p>The packet superframe consists of 798 payload data bytes and a 2-byte CCITT CRC-16 checksum.</p>
+<table class="docutils align-default" id="id14">
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Byte fields of packet superframe</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1-798</p></td>
+<td><p>Packet payload</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>CCITT CRC-16</p></td>
+</tr>
+</tbody>
+</table>
+<p>Packet data is split into frames of 368 type 4 bits preceded by a packet-specific 16-bit sync
+word (0xFF5D).  This is the same size frame used by stream mode.</p>
+<p>The packet frame starts with a 210 byte frame of type 1 data.  It is noteworthy that it does
+not terminate on a byte boundary.</p>
+<p>The frame has 200 bits (25 bytes) of payload data, 6 bits of frame metadata, and 4 bits to
+flush the convolutional coder.</p>
+<table class="docutils align-default" id="id15">
+<caption><span class="caption-number">Table 13 </span><span class="caption-text">Bit fields of packet frame</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0-199</p></td>
+<td><p>Packet payload</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>EOF indicator</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Frame/byte count</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Flush bits for convolutional coder</p></td>
+</tr>
+</tbody>
+</table>
+<p>The metadata field contains a 1 bit <strong>end of frame</strong> (<strong>EOF</strong>) indicator, and a 5-bit frame/byte counter.</p>
+<p>The <strong>EOF</strong> bit is 1 only on the last frame.  The <strong>counter</strong> field is used to indicate the frame number
+when <strong>EOF</strong> is 0, and the number of bytes in the last frame when <strong>EOF</strong> is 1.  This encodes the
+exact packet size, up to 800 bytes, in a 6-bit field.</p>
+<table class="docutils align-default" id="id16">
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">Metadata field with EOF = 0</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Set to 0, Not end of frame</p></td>
+</tr>
+<tr class="row-odd"><td><p>1-5</p></td>
+<td><p>Frame number, 0..31</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id17">
+<caption><span class="caption-number">Table 15 </span><span class="caption-text">Metadata field with EOF = 1</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Set to 1, End of frame</p></td>
+</tr>
+<tr class="row-odd"><td><p>1-5</p></td>
+<td><p>Number of bytes in frame, 1..25</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that it is non-conforming to send a last frame with a length of 0 bytes.</p>
+</div>
+<div class="section" id="convolutional-coding">
+<h3>Convolutional Coding<a class="headerlink" href="#convolutional-coding" title="Permalink to this headline">¶</a></h3>
+<p>The entire frame is convolutionally coded, giving 420 bits of type 2 data.  It is then punctured using
+a 7/8 puncture matrix (1,1,1,1,1,1,1,0) to give 368 type 3 bits.  These are then interleaved and
+decorrelated to give 368 type 4 bits.</p>
+<table class="docutils align-default" id="id18">
+<caption><span class="caption-number">Table 16 </span><span class="caption-text">Packet frame</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>16 bits</p></td>
+<td><p>Sync word 0xFF5D</p></td>
+</tr>
+<tr class="row-odd"><td><p>368 bits</p></td>
+<td><p>Payload</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="carrier-sense-multiple-access">
+<h3>Carrier-sense Multiple Access<a class="headerlink" href="#carrier-sense-multiple-access" title="Permalink to this headline">¶</a></h3>
+<p>When sending packets, the sender is reponsible for ensuring the channel is clear before transmitting.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Carrier-sense_multiple_access">CSMA</a> is used to minimize collisions on
+a shared network.  Specifically, P-persistent access is used.  Each time slot is 40ms (one packet length)
+and the probability SHOULD default to 25%.  In terms of the values used by the KISS protocol, these
+equate to a slot time of 4 and a P-persistence value of 63.</p>
+<p>The benefit of this method is that it imposes no penalty on uncontested networks.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="application_layer.html" class="btn btn-neutral float-right" title="Application Layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="physical_layer.html" class="btn btn-neutral float-left" title="Physical Layer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Project M17.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

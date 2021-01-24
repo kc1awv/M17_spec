@@ -1,0 +1,529 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Physical Layer &mdash; M17 Protocol Specification  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Link Layer" href="data_link_layer.html" />
+    <link rel="prev" title="Glossary" href="glossary.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> M17 Protocol Specification
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Physical Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fsk-generation">4FSK generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preamble">Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bit-types">Bit types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#error-correction-coding-schemes-and-bit-type-conversion">Error correction coding schemes and bit type conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#link-setup-frame">Link setup frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subsequent-frames">Subsequent frames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#golay-24-12">Golay (24,12)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convolutional-encoder">Convolutional encoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-puncturing">Code puncturing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interleaving">Interleaving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-decorrelator">Data decorrelator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_link_layer.html">Data Link Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application_layer.html">Application Layer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Part II - Codeplug:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="codeplug.html">Recommendation for the codeplug structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="address_encoding.html">Address Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorrelator.html">Decorrelator sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interleaving.html">Interleaving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_encapsulation.html">M17 Internet Protocol (IP) Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kiss_protocol.html">KISS Protocol</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">M17 Protocol Specification</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Physical Layer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/physical_layer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="physical-layer">
+<h1>Physical Layer<a class="headerlink" href="#physical-layer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fsk-generation">
+<h2>4FSK generation<a class="headerlink" href="#fsk-generation" title="Permalink to this headline">¶</a></h2>
+<p>M17 standard uses 4FSK modulation running at 4800 symbols/s (9600
+bits/s) with a deviation index h=0.33 for transmission in 9 kHz
+channel bandwidth. Channel spacing is 12.5 kHz. The symbol stream is
+converted to a series of impulses which pass through a
+root-raised-cosine (alpha=0.5) shaping filter before frequency modulation
+at the transmitter and again after frequency demodulation at the
+receiver.</p>
+<div class="figure align-default" id="id6">
+<div class="graphviz"><img src="_images/graphviz-9448db3137489170ce8db0e8c2e311d8f55449e4.png" alt="RRC filter and Frequency Modulation" class="graphviz" /></div>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">4FSK modulator dataflow</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>The bit-to-symbol mapping is shown in the table below.</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Dibit symbol mapping to 4FSK deviation</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p>Information bits</p></th>
+<th class="head" rowspan="2"><p>Symbol</p></th>
+<th class="head" rowspan="2"><p>4FSK deviation</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>Bit 1</p></th>
+<th class="head"><p>Bit 0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>+3</p></td>
+<td><p>+2.4 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>+1</p></td>
+<td><p>+0.8 kHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>-0.8 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>-3</p></td>
+<td><p>-2.4 kHz</p></td>
+</tr>
+</tbody>
+</table>
+<p>The most significant bits are sent first, meaning that the byte 0xB4
+in type 4 bits (see <a class="reference internal" href="#bit-types"><span class="std std-ref">Bit types</span></a>) would be sent as the symbols -1 -3 +3
++1.</p>
+</div>
+<div class="section" id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">¶</a></h2>
+<p>Every transmission starts with a preamble, which shall consist of at
+least 40ms of alternating -3, +3… symbols. This is equivalent to 40
+milliseconds of a 2400 Hz tone</p>
+</div>
+<div class="section" id="bit-types">
+<span id="id2"></span><h2>Bit types<a class="headerlink" href="#bit-types" title="Permalink to this headline">¶</a></h2>
+<p>The bits at different stages of the error correction coding are
+referred to with bit types, given in <a class="reference internal" href="#table-bit-types"><span class="std std-numref">Table 2</span></a>.</p>
+<span id="table-bit-types"></span><table class="docutils align-default" id="id8">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Bit types</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Type 1</p></td>
+<td><p>Data link layer bits</p></td>
+</tr>
+<tr class="row-even"><td><p>Type 2</p></td>
+<td><p>Bits after appropriate encoding</p></td>
+</tr>
+<tr class="row-odd"><td><p>Type 3</p></td>
+<td><p>Bits after puncturing (only for
+convolutionally coded data, for other
+ECC schemes type 3 bits are the same as
+type 2 bits)</p></td>
+</tr>
+<tr class="row-even"><td><p>Type 4</p></td>
+<td><p>Decorrelated and interleaved (re-ordered)
+type 3 bits</p></td>
+</tr>
+</tbody>
+</table>
+<p>Type 4 bits are used for transmission over the RF. Incoming type 4
+bits shall be decoded to type 1 bits, which are then used to extract
+all the frame fields.</p>
+</div>
+<div class="section" id="error-correction-coding-schemes-and-bit-type-conversion">
+<h2>Error correction coding schemes and bit type conversion<a class="headerlink" href="#error-correction-coding-schemes-and-bit-type-conversion" title="Permalink to this headline">¶</a></h2>
+<p>Two distinct <a class="reference internal" href="glossary.html#term-ecc"><span class="xref std std-term">ECC</span></a>/<a class="reference internal" href="glossary.html#term-fec"><span class="xref std std-term">FEC</span></a> schemes are used for different parts of
+the transmission.</p>
+<div class="section" id="link-setup-frame">
+<h3>Link setup frame<a class="headerlink" href="#link-setup-frame" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="id9">
+<img alt="_images/link_setup_frame_encoding.pdf" src="_images/link_setup_frame_encoding.pdf" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">ECC stages for the link setup frame</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<p>240 DST, SRC, TYPE, NONCE and CRC type 1 bits are convolutionally
+coded using rate 1/2 coder with constraint K=5. 4 tail bits are used
+to flush the encoder’s state register, giving a total of 244 bits
+being encoded. Resulting 488 type 2 bits are retained for type 3 bits
+computation. Type 3 bits are computed by puncturing type 2 bits using
+a scheme shown in chapter 4.4. This results in 368 bits, which in
+conjunction with the synchronization burst gives 384 bits (384 bits /
+9600bps = 40 ms).</p>
+<p>Interleaving type 3 bits produce type 4 bits that are ready to be
+transmitted. Interleaving is used to combat error bursts.</p>
+</div>
+<div class="section" id="subsequent-frames">
+<h3>Subsequent frames<a class="headerlink" href="#subsequent-frames" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="id10">
+<img alt="_images/frame_encoding.pdf" src="_images/frame_encoding.pdf" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">ECC stages of subsequent frames</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<p>A 48-bit (type 1) chunk of LICH is partitioned into 4 12-bit parts and
+encoded using Golay (24, 12) code. This produces 96 encoded LICH bits
+of type 2.</p>
+<p>FN, payload and CRC is 160 bits which are convolutionally encoded in a manner
+analogous to that of the link setup frame. A total of 164 bits is
+being encoded resulting in 328 type 2 bits. These bits are punctured
+to generate 272 type 3 bits.</p>
+<p>96 type 2 bits of LICH are concatenated with 272 type 3 bits and
+re-ordered to form type 4 bits for transmission. This, along with
+16-bit sync in the beginning of frame, gives a total of 384 bits</p>
+<p>The LICH chunks allow for late listening and indepedent decoding to
+check destination address. The goal is to require less complexity to
+decode just the LICH and check if the full message should be decoded.</p>
+</div>
+<div class="section" id="golay-24-12">
+<h3>Golay (24,12)<a class="headerlink" href="#golay-24-12" title="Permalink to this headline">¶</a></h3>
+<p>The Golay (24,12) encoder uses the polynomial 0xC75 to generate the 11
+check bits.  The check bits and an overall parity bit are appended to
+the 12 bit data, resulting in a 24 bit encoded chunk.</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+G =&amp; x^{11} + x^{10} + x^6 + x^5 + x^4 + x^2 + 1
+\end{align}\]</div>
+<p>The output of the Golay encoder looks like:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 33%" />
+<col style="width: 31%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Data</p></td>
+<td><p>Check bits</p></td>
+<td><p>Parity</p></td>
+</tr>
+<tr class="row-even"><td><p>23-12 (12 bits)</p></td>
+<td><p>11-1 (11 bits)</p></td>
+<td><p>0 (1 bit)</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Four of these 24-bit blocks are used to encode the LICH.</p>
+</div>
+<div class="section" id="convolutional-encoder">
+<h3>Convolutional encoder<a class="headerlink" href="#convolutional-encoder" title="Permalink to this headline">¶</a></h3>
+<dl class="citation">
+<dt class="label" id="ecc"><span class="brackets">ECC</span></dt>
+<dd><p>Moreira, Jorge C.; Farrell, Patrick G. “Essentials of
+Error‐Control Coding” Wiley 2006, ISBN: 9780470029206</p>
+</dd>
+</dl>
+<p>The convolutional code shall encode the input bit sequence after
+appending 4 tail bits at the end of the sequence. Rate of the coder is
+R=½ with constraint length K=5 <a class="reference internal" href="#nxdn" id="id3"><span>[NXDN]</span></a>. The encoder diagram and generating
+polynomials are shown below</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+G_1(D) =&amp; 1 + D^3 + D^4 \\
+G_2(D) =&amp; 1+ D + D^2 + D^4
+\end{align}</div><p>The output from the encoder must be read alternately.</p>
+<dl class="citation">
+<dt class="label" id="nxdn"><span class="brackets"><a class="fn-backref" href="#id3">NXDN</a></span></dt>
+<dd><p>NXDN Technical Specifications, Part 1: Air Interface;
+Sub-part A: Common Air Interface</p>
+</dd>
+</dl>
+<div class="figure align-default" id="id11">
+<a class="reference internal image-reference" href="_images/convolutional.pdf"><img alt="_images/convolutional.pdf" src="_images/convolutional.pdf" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Convolutional coder diagram</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="code-puncturing">
+<h3>Code puncturing<a class="headerlink" href="#code-puncturing" title="Permalink to this headline">¶</a></h3>
+<p>Removing some of the bits from the convolutional coder’s output is
+called code puncturing. The nominal coding rate of the encoder used in
+M17 is ½. This means the encoder outputs two bits for every bit of the
+input data stream. To get other (higher) coding rates, a puncturing
+scheme has to be used.</p>
+<p>Two different puncturing schemes are used in M17 stream mode:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(P_1\)</span> leaving 46 from 61 encoded bits</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_2\)</span> leaving 34 from 41 encoded bits</p></li>
+</ol>
+<p>Scheme <span class="math notranslate nohighlight">\(P_1\)</span> is used for the initial LICH link setup info, taking 488
+bits of encoded data and selecting 368 bits. The <span class="math notranslate nohighlight">\(gcd(368, 488)\)</span>
+is 8 which, when used to divide, leaves 46 and 61. A full puncture
+pattern requires the output be divisible by the number of encoding
+polynomials. For this case the full puncture matrix should have 122
+entries with 92 of them being 1.</p>
+<p>Scheme <span class="math notranslate nohighlight">\(P_2\)</span> is for frames (excluding LICH chunks, which are coded
+differently). This takes 328 encoded bits and selects 272 of the
+bits. The <span class="math notranslate nohighlight">\(gcd(272, 328)\)</span> is 8 which results in the 34 and 41
+reduced ratio. The full matrix will have 82 entries with 68 being 1.</p>
+<p>The matrices can be represented more concisely by duplicating a
+smaller matrix with a <em>flattening</em>.</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  S_{} = &amp; \begin{bmatrix}
+  a &amp; \vec{r_1} &amp; c \\
+  b &amp; \vec{r_2} &amp; X
+  \end{bmatrix} \\
+  S_{full} = &amp; \begin{bmatrix}
+  a &amp; \vec{r_1} &amp; c &amp; b &amp; \vec{r_2} \\
+  b &amp; \vec{r_2} &amp; a &amp; \vec{r_1} &amp; c
+  \end{bmatrix}
+\end{align}</div><p>The puncturing schemes are defined by their partial puncturing matrices:</p>
+<div class="math notranslate nohighlight">
+.. only:: latex
+   \setcounter{MaxMatrixCols}{32}
+
+\begin{align}
+P_1 = &amp; \begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; X
+\end{bmatrix} \\
+P_2 = &amp; \begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; X
+\end{bmatrix}
+\end{align}</div><p>The complete linearized representations are:</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">linearized puncture patterns</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">P1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">P2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="interleaving">
+<h3>Interleaving<a class="headerlink" href="#interleaving" title="Permalink to this headline">¶</a></h3>
+<p>For interleaving a Quadratic Permutation Polynomial (QPP) is used. The
+polynomial <span class="math notranslate nohighlight">\(\pi(x)=(45x+92x^2)\mod 368\)</span> is used for a 368 bit interleaving
+pattern <a class="reference internal" href="#qpp" id="id4"><span>[QPP]</span></a>. See appendix <a class="reference internal" href="interleaving.html#sec-interleaver"><span class="std std-numref">Table 24</span></a> for pattern.</p>
+<dl class="citation">
+<dt class="label" id="qpp"><span class="brackets"><a class="fn-backref" href="#id4">QPP</a></span></dt>
+<dd><p>Trifina, Lucian, Daniela Tarniceriu, and Valeriu
+Munteanu. “Improved QPP Interleavers for LTE Standard.” ISSCS
+2011 - International Symposium on Signals, Circuits and
+Systems (2011): n. pag. Crossref. Web. <a class="reference external" href="https://arxiv.org/abs/1103.3794">https://arxiv.org/abs/1103.3794</a></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="data-decorrelator">
+<h3>Data decorrelator<a class="headerlink" href="#data-decorrelator" title="Permalink to this headline">¶</a></h3>
+<p>To avoid transmitting long sequences of constant symbols
+(e.g. 010101…), a simple algorithm is used. All 46
+bytes of type 4 bits shall be XORed with a pseudorandom, predefined
+stream. The same algorithm has to be used for incoming bits at the
+receiver to get the original data stream. See <a class="reference internal" href="decorrelator.html#sec-decorr-seq"><span class="std std-numref">Table 23</span></a> for sequence.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="data_link_layer.html" class="btn btn-neutral float-right" title="Data Link Layer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="glossary.html" class="btn btn-neutral float-left" title="Glossary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Project M17.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

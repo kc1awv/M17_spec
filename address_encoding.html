@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Address Encoding &mdash; M17 Protocol Specification  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Decorrelator sequence" href="decorrelator.html" />
+    <link rel="prev" title="Recommendation for the codeplug structure" href="codeplug.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> M17 Protocol Specification
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physical_layer.html">Physical Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_link_layer.html">Data Link Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application_layer.html">Application Layer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Part II - Codeplug:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="codeplug.html">Recommendation for the codeplug structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Address Encoding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#callsign-encoding-base40">Callsign Encoding: base40</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-code-encode-base40">Example code: encode_base40()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-code-decode-base40">Example code: decode_base40()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-base40">Why base40?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#callsign-formats">Callsign Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-stations">Multiple Stations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temporary-modifiers">Temporary Modifiers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interoperability">Interoperability</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dmr">DMR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#d-star">D-Star</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interoperability-challenges">Interoperability Challenges</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="decorrelator.html">Decorrelator sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interleaving.html">Interleaving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_encapsulation.html">M17 Internet Protocol (IP) Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kiss_protocol.html">KISS Protocol</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">M17 Protocol Specification</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Address Encoding</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/address_encoding.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="address-encoding">
+<h1>Address Encoding<a class="headerlink" href="#address-encoding" title="Permalink to this headline">¶</a></h1>
+<p>M17 uses 48 bits (6 bytes) long addresses. Callsigns (and other
+addresses) are encoded into these 6 bytes in the following ways:</p>
+<ul class="simple">
+<li><p>An address of 0 is invalid.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Address values between 1 and 262143999999999 (which is
+<span class="math notranslate nohighlight">\(40^9-1\)</span>), up to 9 characters of text are encoded using
+base40, described below.</p></li>
+<li><p>Address values between 262144000000000 (<span class="math notranslate nohighlight">\(40^9\)</span>) and
+281474976710654 (<span class="math notranslate nohighlight">\(2^{48}-2\)</span>) are invalid</p></li>
+</ul>
+<ul class="simple">
+<li><p>An address of 0xFFFFFFFFFFFF is a broadcast. All stations should
+receive and listen to this message.</p></li>
+</ul>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-number">Table 20 </span><span class="caption-text">Address scheme</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 18%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Address Range</p></th>
+<th class="head"><p>Category</p></th>
+<th class="head"><p>Number of addresses</p></th>
+<th class="head"><p>Remarks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0x000000000000</p></td>
+<td><p>RESERVED</p></td>
+<td><p>1</p></td>
+<td><p>For future use</p></td>
+</tr>
+<tr class="row-odd"><td><p>0x000000000001-0xee6b27ffffff</p></td>
+<td><p>Unit ID</p></td>
+<td><p>262143999999999</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>0xee6b28000000-0xfffffffffffe</p></td>
+<td><p>RESERVED</p></td>
+<td><p>19330976710655</p></td>
+<td><p>For future use</p></td>
+</tr>
+<tr class="row-odd"><td><p>0xffffffffffff</p></td>
+<td><p>Broadcast</p></td>
+<td><p>1</p></td>
+<td><p>Valid only for
+destination field</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="callsign-encoding-base40">
+<h2>Callsign Encoding: base40<a class="headerlink" href="#callsign-encoding-base40" title="Permalink to this headline">¶</a></h2>
+<p>9 characters from an alphabet of 40 possible characters can be encoded into 48 bits, 6 bytes. The
+base40 alphabet is:</p>
+<ul class="simple">
+<li><p>0: A space. Invalid characters will be replaced with this.</p></li>
+<li><p>1-26: “A” through “Z”</p></li>
+<li><p>27-36: “0” through “9”</p></li>
+<li><p>37: “-” (hyphen)</p></li>
+<li><p>38: “/” (slash)</p></li>
+<li><p>39: “.” (dot)</p></li>
+</ul>
+<p>Encoding is little endian. That is, the right most characters in the
+encoded string are the most significant bits in the resulting
+encoding.</p>
+<div class="section" id="example-code-encode-base40">
+<h3>Example code: encode_base40()<a class="headerlink" href="#example-code-encode-base40" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint64_t</span> <span class="nf">encode_callsign_base40</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">callsign</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">uint64_t</span> <span class="n">encoded</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">callsign</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">callsign</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="n">p</span> <span class="o">&gt;=</span> <span class="n">callsign</span><span class="p">;</span> <span class="n">p</span><span class="o">--</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">encoded</span> <span class="o">*=</span> <span class="mi">40</span><span class="p">;</span>
+    <span class="c1">// If speed is more important than code space, you can replace this with a lookup into a 256 byte array.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="sc">&#39;A&#39;</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;=</span> <span class="sc">&#39;Z&#39;</span><span class="p">)</span> <span class="c1">// 1-26</span>
+      <span class="n">encoded</span> <span class="o">+=</span> <span class="o">*</span><span class="n">p</span> <span class="o">-</span> <span class="sc">&#39;A&#39;</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="sc">&#39;0&#39;</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;=</span> <span class="sc">&#39;9&#39;</span><span class="p">)</span> <span class="c1">// 27-36</span>
+      <span class="n">encoded</span> <span class="o">+=</span> <span class="o">*</span><span class="n">p</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span> <span class="o">+</span> <span class="mi">27</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="c1">// 37</span>
+      <span class="n">encoded</span> <span class="o">+=</span> <span class="mi">37</span><span class="p">;</span>
+    <span class="c1">// These are just place holders. If other characters make more sense, change these.</span>
+    <span class="c1">// Be sure to change them in the decode array below too.</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="c1">// 38</span>
+      <span class="n">encoded</span> <span class="o">+=</span> <span class="mi">38</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">p</span> <span class="o">==</span> <span class="sc">&#39;.&#39;</span><span class="p">)</span> <span class="c1">// 39</span>
+      <span class="n">encoded</span> <span class="o">+=</span> <span class="mi">39</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="c1">// Invalid character or space, represented by 0, decoded as a space.</span>
+      <span class="c1">//encoded += 0;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">encoded</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-code-decode-base40">
+<h3>Example code: decode_base40()<a class="headerlink" href="#example-code-decode-base40" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span><span class="nf">decode_callsign_base40</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">encoded</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">callsign</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">encoded</span> <span class="o">&gt;=</span> <span class="mi">262144000000000</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 40^9</span>
+    <span class="o">*</span><span class="n">callsign</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">callsign</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="n">callsign</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(;</span> <span class="n">encoded</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">p</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="s">&quot; ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-/.&quot;</span><span class="p">[</span><span class="n">encoded</span> <span class="o">%</span> <span class="mi">40</span><span class="p">];</span>
+    <span class="n">encoded</span> <span class="o">/=</span> <span class="mi">40</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="n">callsign</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="why-base40">
+<h3>Why base40?<a class="headerlink" href="#why-base40" title="Permalink to this headline">¶</a></h3>
+<p>The longest commonly assigned callsign from the FCC is 6 characters. The minimum alphabet of A-Z,
+0-9, and a “done” character mean the most compact encoding of an American callsign could be:
+<span class="math notranslate nohighlight">\(log2(37^6)=31.26\)</span> bits, or 4 bytes.</p>
+<p>Some countries use longer callsigns, and the US sometimes issues
+longer special event callsigns. Also, we want to extend our callsigns
+(see below). So we want more than 6 characters. How many bits do we
+need to represent more characters:</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-number">Table 21 </span><span class="caption-text">bits per characters</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>characters</p></th>
+<th class="head"><p>bits</p></th>
+<th class="head"><p>bytes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(37^7)=36.47\)</span></p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(37^8)=41.67\)</span></p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(37^9)=46.89\)</span></p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(37^{10})=52.09\)</span></p></td>
+<td><p>7</p></td>
+</tr>
+</tbody>
+</table>
+<p>Of these, 9 characters into 6 bytes seems the sweet spot. Given 9
+characters, how large can we make the alphabet without using more than
+6 bytes?</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-number">Table 22 </span><span class="caption-text">alphabet size vs bytes</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>alphabet size</p></th>
+<th class="head"><p>bits</p></th>
+<th class="head"><p>bytes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>37</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(37^9)=46.89\)</span></p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>38</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(38^9)=47.23\)</span></p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>39</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(39^9)=47.57\)</span></p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(40^9)=47.90\)</span></p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-even"><td><p>41</p></td>
+<td><p><span class="math notranslate nohighlight">\(log2(41^9)=48.22\)</span></p></td>
+<td><p>7</p></td>
+</tr>
+</tbody>
+</table>
+<p>Given this, 9 characters from an alphabet of 40 possible characters,
+makes maximal use of 6 bytes.</p>
+</div>
+</div>
+<div class="section" id="callsign-formats">
+<h2>Callsign Formats<a class="headerlink" href="#callsign-formats" title="Permalink to this headline">¶</a></h2>
+<p>Government issued callsigns should be able to encode directly with no
+changes.</p>
+<div class="section" id="multiple-stations">
+<h3>Multiple Stations<a class="headerlink" href="#multiple-stations" title="Permalink to this headline">¶</a></h3>
+<p>To allow for multiple stations by the same operator, we borrow the use
+of the ‘-‘ character from AX.25 and the SSID field. A callsign such as
+“KR6ZY-1” is considered a different station than “KR6ZY-2” or even
+“KR6ZY”, but it is understood that these all belong to the same
+operator, “KR6ZY”</p>
+</div>
+<div class="section" id="temporary-modifiers">
+<h3>Temporary Modifiers<a class="headerlink" href="#temporary-modifiers" title="Permalink to this headline">¶</a></h3>
+<p>Similarly, suffixes are often added to callsign to indicate temporary
+changes of status, such as “KR6ZY/M” for a mobile station, or
+“KR6ZY/AE” to signify that I have Amateur Extra operating privileges
+even though the FCC database may not yet be updated. So the ‘/’ is
+included in the base40 alphabet.  The difference between ‘-‘ and ‘/’
+is that ‘-‘ are considered different stations, but ‘/’ are NOT. They
+are considered to be a temporary modification to the same
+station.</p>
+</div>
+<div class="section" id="interoperability">
+<h3>Interoperability<a class="headerlink" href="#interoperability" title="Permalink to this headline">¶</a></h3>
+<p>It may be desirable to bridge information between M17 and other
+networks. The 9 character base40 encoding allows for this:</p>
+<div class="section" id="dmr">
+<h4>DMR<a class="headerlink" href="#dmr" title="Permalink to this headline">¶</a></h4>
+<p>DMR unfortunately doesn’t have a guaranteed single name
+space. Individual IDs are reasonably well recognized to be managed by
+<a class="reference external" href="https://www.radioid.net/database">https://www.radioid.net/database</a>/search#! but Talk Groups are much
+less well managed. Talk Group XYZ on Brandmeister may be (and often
+is) different than Talk Group XYZ on a private cBridge system.</p>
+<ul class="simple">
+<li><p>DMR IDs are encoded as: D&lt;number&gt; eg: D3106728 for KR6ZY</p></li>
+<li><p>DMR Talk Groups are encoded by their network. Currently, the
+following networks are defined:</p></li>
+<li><p>Brandmeister: BM&lt;number&gt; eg: BM31075</p></li>
+<li><p>DMRPlus: DP&lt;number&gt; eg: DP262</p></li>
+<li><p>More networks to be defined here.</p></li>
+</ul>
+</div>
+<div class="section" id="d-star">
+<h4>D-Star<a class="headerlink" href="#d-star" title="Permalink to this headline">¶</a></h4>
+<p>D-Star reflectors have well defined names: REFxxxY which are encoded directly into base40.</p>
+</div>
+<div class="section" id="interoperability-challenges">
+<h4>Interoperability Challenges<a class="headerlink" href="#interoperability-challenges" title="Permalink to this headline">¶</a></h4>
+<p>We’ll need to provide a source ID on the other network. Not sure how
+to do that, and it’ll probably be unique for each network we want to
+interoperate with. Maybe write the DMR/BM gateway to automatically
+lookup a callsign in the DMR database and map it to a DMR ID? Just
+thinking out loud.</p>
+<p>We will have to transcode CODEC2 to whatever the other network uses
+(pretty much AMBE of one flavor or another.) I’d be curious to see how
+that sounds.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="decorrelator.html" class="btn btn-neutral float-right" title="Decorrelator sequence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="codeplug.html" class="btn btn-neutral float-left" title="Recommendation for the codeplug structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Project M17.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

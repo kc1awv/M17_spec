@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Recommendation for the codeplug structure &mdash; M17 Protocol Specification  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Address Encoding" href="address_encoding.html" />
+    <link rel="prev" title="Application Layer" href="application_layer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> M17 Protocol Specification
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physical_layer.html">Physical Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_link_layer.html">Data Link Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application_layer.html">Application Layer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Part II - Codeplug:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Recommendation for the codeplug structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#codeplug-file-structure">Codeplug file structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#keywords">Keywords</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-codeplug">Example Codeplug</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="address_encoding.html">Address Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorrelator.html">Decorrelator sequence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interleaving.html">Interleaving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_encapsulation.html">M17 Internet Protocol (IP) Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kiss_protocol.html">KISS Protocol</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">M17 Protocol Specification</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Recommendation for the codeplug structure</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/codeplug.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="recommendation-for-the-codeplug-structure">
+<h1>Recommendation for the codeplug structure<a class="headerlink" href="#recommendation-for-the-codeplug-structure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Codeplugs are ordinary text files with <em>.m17</em> extension. They provide an information on:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>channel banks</p></li>
+<li><p>channel frequencies</p></li>
+<li><p>destination IDs</p></li>
+<li><p>transmission mode</p></li>
+<li><p>payload type</p></li>
+<li><p>encryption mode</p></li>
+</ul>
+</div></blockquote>
+<p>Codeplugs should be human-readable and easily editable with common text editors.</p>
+</div>
+<div class="section" id="codeplug-file-structure">
+<h2>Codeplug file structure<a class="headerlink" href="#codeplug-file-structure" title="Permalink to this headline">¶</a></h2>
+<p>We recommend using YAML for the codeplug files.</p>
+<div class="section" id="keywords">
+<h3>Keywords<a class="headerlink" href="#keywords" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><strong>codeplug:</strong></dt><dd><dl class="simple">
+<dt><strong>author:</strong></dt><dd><p>String - Codeplug author, max 16 characters</p>
+</dd>
+<dt><strong>version:</strong></dt><dd><p>Date and time in YYYY-MM-DDTHH:MM:SS format</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>bank:</strong></dt><dd><dl class="simple">
+<dt><strong>name:</strong></dt><dd><p>String - Channel bank name, 16 characters maximum</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>channel:</strong></dt><dd><dl class="simple">
+<dt><strong>name:</strong></dt><dd><p>String - Channel name, 16 characters maximum</p>
+</dd>
+<dt><strong>descr:</strong></dt><dd><p>String - Channel Description, 16 characters maximum</p>
+</dd>
+<dt><strong>freq_rx:</strong></dt><dd><p>Integer - Channel RX Frequency in Hz</p>
+</dd>
+<dt><strong>freq_tx:</strong></dt><dd><p>Integer - Channel TX Frequency in Hz</p>
+</dd>
+<dt><strong>mode:</strong></dt><dd><p>Integer - Channel mode. Valid modes are: 0 - Analog, 1 - Digital Voice, 2 - Digital Data, 3 - Digital Voice and Data</p>
+</dd>
+<dt><strong>encr:</strong></dt><dd><p>Integer - Is encryption enabled? 0 for no encryption, 1 - AES256, 2 - scrambler etc. (refer to M17_spec for details)</p>
+</dd>
+<dt><strong>nonce:</strong></dt><dd><p>String - 14-byte hex value without leading 0x. nonce for ciphers or initial LFSR value for scrambler</p>
+</dd>
+<dt><strong>gps:</strong></dt><dd><p>Boolean - If true, and mode value enables digital data, gps data will be transferred along with payload</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="example-codeplug">
+<h2>Example Codeplug<a class="headerlink" href="#example-codeplug" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">codeplug</span><span class="p">:</span>
+  <span class="n">author</span><span class="p">:</span> <span class="n">SP5WWP</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">28</span><span class="o">-</span><span class="mi">09</span><span class="n">T13</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">49</span>
+  <span class="o">-</span> <span class="n">bank</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">M17</span>
+    <span class="o">-</span> <span class="n">channel</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">M17_DMO</span>
+      <span class="n">descr</span><span class="p">:</span>
+      <span class="n">freq_rx</span><span class="p">:</span> <span class="mi">439575000</span>
+      <span class="n">freq_tx</span><span class="p">:</span> <span class="mi">439575000</span>
+      <span class="n">mode</span><span class="p">:</span> <span class="mi">2</span>
+      <span class="n">encr</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">gps</span><span class="p">:</span> <span class="n">false</span>
+    <span class="o">-</span> <span class="n">channel</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">M17_DMO_2</span>
+      <span class="n">descr</span><span class="p">:</span>
+      <span class="n">freq_rx</span><span class="p">:</span> <span class="mi">439975000</span>
+      <span class="n">freq_tx</span><span class="p">:</span> <span class="mi">439975000</span>
+      <span class="n">mode</span><span class="p">:</span> <span class="mi">2</span>
+      <span class="n">encr</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">gps</span><span class="p">:</span> <span class="n">false</span>
+  <span class="o">-</span> <span class="n">bank</span><span class="p">:</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Repeaters</span>
+    <span class="o">-</span> <span class="n">channel</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="n">SR5MS</span>
+      <span class="n">descr</span><span class="p">:</span>
+      <span class="n">freq_rx</span><span class="p">:</span> <span class="mi">439425000</span>
+      <span class="n">freq_tx</span><span class="p">:</span> <span class="mi">431825000</span>
+      <span class="n">mode</span><span class="p">:</span> <span class="mi">2</span>
+      <span class="n">encr</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">nonce</span><span class="p">:</span> <span class="mi">0</span>
+      <span class="n">gps</span><span class="p">:</span> <span class="n">false</span>
+<span class="c1">#codeplug end</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="address_encoding.html" class="btn btn-neutral float-right" title="Address Encoding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="application_layer.html" class="btn btn-neutral float-left" title="Application Layer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Project M17.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

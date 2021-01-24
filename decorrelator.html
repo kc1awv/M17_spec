@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Search &mdash; M17 Protocol Specification  documentation</title>
+  <title>Decorrelator sequence &mdash; M17 Protocol Specification  documentation</title>
   
 
   
@@ -24,7 +24,6 @@
   
 
   
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -40,10 +39,10 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <script type="text/javascript" src="_static/searchtools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Interleaving" href="interleaving.html" />
+    <link rel="prev" title="Address Encoding" href="address_encoding.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -70,7 +69,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -101,9 +100,9 @@
 <li class="toctree-l1"><a class="reference internal" href="codeplug.html">Recommendation for the codeplug structure</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendix:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="address_encoding.html">Address Encoding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decorrelator.html">Decorrelator sequence</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Decorrelator sequence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interleaving.html">Interleaving</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ip_encapsulation.html">M17 Internet Protocol (IP) Networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kiss_protocol.html">KISS Protocol</a></li>
@@ -155,10 +154,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Decorrelator sequence</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/decorrelator.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -170,23 +173,152 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="decorrelator-sequence">
+<h1>Decorrelator sequence<a class="headerlink" href="#decorrelator-sequence" title="Permalink to this headline">¶</a></h1>
+<span id="sec-decorr-seq"></span><table class="docutils align-default" id="id1">
+<caption><span class="caption-number">Table 23 </span><span class="caption-text">Decorrelator scrambling sequence</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Seq. number</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Seq. number</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>00</p></td>
+<td><p>0xD6</p></td>
+<td><p>23</p></td>
+<td><p>0x6E</p></td>
+</tr>
+<tr class="row-odd"><td><p>01</p></td>
+<td><p>0xB5</p></td>
+<td><p>24</p></td>
+<td><p>0x68</p></td>
+</tr>
+<tr class="row-even"><td><p>02</p></td>
+<td><p>0xE2</p></td>
+<td><p>25</p></td>
+<td><p>0x2F</p></td>
+</tr>
+<tr class="row-odd"><td><p>03</p></td>
+<td><p>0x30</p></td>
+<td><p>26</p></td>
+<td><p>0x35</p></td>
+</tr>
+<tr class="row-even"><td><p>04</p></td>
+<td><p>0x82</p></td>
+<td><p>27</p></td>
+<td><p>0xDA</p></td>
+</tr>
+<tr class="row-odd"><td><p>05</p></td>
+<td><p>0xFF</p></td>
+<td><p>28</p></td>
+<td><p>0x14</p></td>
+</tr>
+<tr class="row-even"><td><p>06</p></td>
+<td><p>0x84</p></td>
+<td><p>29</p></td>
+<td><p>0xEA</p></td>
+</tr>
+<tr class="row-odd"><td><p>07</p></td>
+<td><p>0x62</p></td>
+<td><p>30</p></td>
+<td><p>0xCD</p></td>
+</tr>
+<tr class="row-even"><td><p>08</p></td>
+<td><p>0xBA</p></td>
+<td><p>31</p></td>
+<td><p>0x76</p></td>
+</tr>
+<tr class="row-odd"><td><p>09</p></td>
+<td><p>0x4E</p></td>
+<td><p>32</p></td>
+<td><p>0x19</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>0x96</p></td>
+<td><p>33</p></td>
+<td><p>0x8D</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>0x90</p></td>
+<td><p>34</p></td>
+<td><p>0xD5</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>0xD8</p></td>
+<td><p>35</p></td>
+<td><p>0x80</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>0x98</p></td>
+<td><p>36</p></td>
+<td><p>0xD1</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>0xDD</p></td>
+<td><p>37</p></td>
+<td><p>0x33</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>0x5D</p></td>
+<td><p>38</p></td>
+<td><p>0x87</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>0x0C</p></td>
+<td><p>39</p></td>
+<td><p>0x13</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>0xC8</p></td>
+<td><p>40</p></td>
+<td><p>0x57</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>0x52</p></td>
+<td><p>41</p></td>
+<td><p>0x18</p></td>
+</tr>
+<tr class="row-odd"><td><p>19</p></td>
+<td><p>0x43</p></td>
+<td><p>42</p></td>
+<td><p>0x2D</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>0x91</p></td>
+<td><p>43</p></td>
+<td><p>0x29</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+<td><p>0x1D</p></td>
+<td><p>44</p></td>
+<td><p>0x78</p></td>
+</tr>
+<tr class="row-even"><td><p>22</p></td>
+<td><p>0xF8</p></td>
+<td><p>45</p></td>
+<td><p>0xC3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="interleaving.html" class="btn btn-neutral float-right" title="Interleaving" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="address_encoding.html" class="btn btn-neutral float-left" title="Address Encoding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
@@ -223,14 +355,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

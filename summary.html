@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Search &mdash; M17 Protocol Specification  documentation</title>
+  <title>M17 RF Protocol: Summary &mdash; M17 Protocol Specification  documentation</title>
   
 
   
@@ -24,7 +24,6 @@
   
 
   
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -40,10 +39,10 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <script type="text/javascript" src="_static/searchtools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="M17 Protocol Specification" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -70,7 +69,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -89,8 +88,8 @@
             
             
               <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">M17 RF Protocol: Summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physical_layer.html">Physical Layer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_link_layer.html">Data Link Layer</a></li>
@@ -155,10 +154,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Search</li>
+      <li>M17 RF Protocol: Summary</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/summary.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -170,23 +173,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="m17-rf-protocol-summary">
+<h1>M17 RF Protocol: Summary<a class="headerlink" href="#m17-rf-protocol-summary" title="Permalink to this headline">¶</a></h1>
+<p>M17 is an RF protocol that is:</p>
+<ul class="simple">
+<li><p>Completely open: open specification, open source code, open source
+hardware, open algorithms. Anyone must be able to build an M17 radio
+and interoperate with other M17 radios without having to pay anyone
+else for the right to do so.</p></li>
+<li><p>Optimized for amateur radio use.</p></li>
+<li><p>Simple to understand and implement.</p></li>
+<li><p>Capable of doing the things hams expect their digital protocols to
+do:</p>
+<ul>
+<li><p>Voice (eg: DMR, D-Star, etc)</p></li>
+<li><p>Point to point data (eg: Packet, D-Star, etc)</p></li>
+<li><p>Broadcast telemetry (eg: APRS, etc)</p></li>
+<li><p>Extensible, so more capabilities can be added over time.</p></li>
+</ul>
+</li>
+</ul>
+<p>To do this, the M17 protocol is broken down into three protocol layers, like a network:</p>
+<ol class="arabic simple">
+<li><p>Physical Layer: How to encode 1s and 0s into RF. Specifies RF
+modulation, symbol rates, bits per symbol, etc.</p></li>
+<li><p>Data Link Layer: How to packetize those 1s and 0s into usable
+data. Packet vs Stream modes, headers, addressing, etc.</p></li>
+<li><p>Application Layer: Accomplishing activities. Voice and data
+streams, control packets, beacons, etc.</p></li>
+</ol>
+<p>This document attempts to document these layers.</p>
+<dl class="citation">
+<dt class="label" id="tetra"><span class="brackets">TETRA</span></dt>
+<dd><p>Dunlop, John; Girma, Demessie; Irvine, James “Digital
+Mobile Communications and the TETRA System” Wiley 1999,
+ISBN: 9780471987925</p>
+</dd>
+<dt class="label" id="dmr"><span class="brackets">DMR</span></dt>
+<dd><p>ETSI TS 102 361-1 V2.2.1 (2013-02): “Electromagnetic
+compatibility and Radio spectrum Matters (ERM); Digital
+Mobile Radio (DMR) Systems; Part 1: DMR Air Interface (AI)
+protocol”
+<a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/102300_102399/10236101/02.02.01_60/ts_10236101v020201p.pdf">https://www.etsi.org/deliver/etsi_ts/102300_102399/10236101/02.02.01_60/ts_10236101v020201p.pdf</a></p>
+</dd>
+</dl>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="M17 Protocol Specification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
@@ -223,14 +264,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

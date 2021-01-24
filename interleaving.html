@@ -1,0 +1,1082 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Interleaving &mdash; M17 Protocol Specification  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="M17 Internet Protocol (IP) Networking" href="ip_encapsulation.html" />
+    <link rel="prev" title="Decorrelator sequence" href="decorrelator.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> M17 Protocol Specification
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Part I - Air and IP Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">M17 RF Protocol: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physical_layer.html">Physical Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_link_layer.html">Data Link Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="application_layer.html">Application Layer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Part II - Codeplug:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="codeplug.html">Recommendation for the codeplug structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="address_encoding.html">Address Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorrelator.html">Decorrelator sequence</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Interleaving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ip_encapsulation.html">M17 Internet Protocol (IP) Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kiss_protocol.html">KISS Protocol</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">M17 Protocol Specification</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Interleaving</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/interleaving.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="interleaving">
+<h1>Interleaving<a class="headerlink" href="#interleaving" title="Permalink to this headline">¶</a></h1>
+<span id="sec-interleaver"></span><table class="docutils align-default" id="id1">
+<caption><span class="caption-number">Table 24 </span><span class="caption-text">Interleaving table</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>input index</p></th>
+<th class="head"><p>output ind</p></th>
+<th class="head"><p>input index</p></th>
+<th class="head"><p>output ind</p></th>
+<th class="head"><p>input index</p></th>
+<th class="head"><p>output ind</p></th>
+<th class="head"><p>input index</p></th>
+<th class="head"><p>output ind</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>92</p></td>
+<td><p>92</p></td>
+<td><p>184</p></td>
+<td><p>184</p></td>
+<td><p>276</p></td>
+<td><p>276</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>137</p></td>
+<td><p>93</p></td>
+<td><p>229</p></td>
+<td><p>185</p></td>
+<td><p>321</p></td>
+<td><p>277</p></td>
+<td><p>45</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>90</p></td>
+<td><p>94</p></td>
+<td><p>182</p></td>
+<td><p>186</p></td>
+<td><p>274</p></td>
+<td><p>278</p></td>
+<td><p>366</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>227</p></td>
+<td><p>95</p></td>
+<td><p>319</p></td>
+<td><p>187</p></td>
+<td><p>43</p></td>
+<td><p>279</p></td>
+<td><p>135</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>180</p></td>
+<td><p>96</p></td>
+<td><p>272</p></td>
+<td><p>188</p></td>
+<td><p>364</p></td>
+<td><p>280</p></td>
+<td><p>88</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>317</p></td>
+<td><p>97</p></td>
+<td><p>41</p></td>
+<td><p>189</p></td>
+<td><p>133</p></td>
+<td><p>281</p></td>
+<td><p>225</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>270</p></td>
+<td><p>98</p></td>
+<td><p>362</p></td>
+<td><p>190</p></td>
+<td><p>86</p></td>
+<td><p>282</p></td>
+<td><p>178</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>39</p></td>
+<td><p>99</p></td>
+<td><p>131</p></td>
+<td><p>191</p></td>
+<td><p>223</p></td>
+<td><p>283</p></td>
+<td><p>315</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>360</p></td>
+<td><p>100</p></td>
+<td><p>84</p></td>
+<td><p>192</p></td>
+<td><p>176</p></td>
+<td><p>284</p></td>
+<td><p>268</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>129</p></td>
+<td><p>101</p></td>
+<td><p>221</p></td>
+<td><p>193</p></td>
+<td><p>313</p></td>
+<td><p>285</p></td>
+<td><p>37</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>82</p></td>
+<td><p>102</p></td>
+<td><p>174</p></td>
+<td><p>194</p></td>
+<td><p>266</p></td>
+<td><p>286</p></td>
+<td><p>358</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>219</p></td>
+<td><p>103</p></td>
+<td><p>311</p></td>
+<td><p>195</p></td>
+<td><p>35</p></td>
+<td><p>287</p></td>
+<td><p>127</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>172</p></td>
+<td><p>104</p></td>
+<td><p>264</p></td>
+<td><p>196</p></td>
+<td><p>356</p></td>
+<td><p>288</p></td>
+<td><p>80</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>309</p></td>
+<td><p>105</p></td>
+<td><p>33</p></td>
+<td><p>197</p></td>
+<td><p>125</p></td>
+<td><p>289</p></td>
+<td><p>217</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>262</p></td>
+<td><p>106</p></td>
+<td><p>354</p></td>
+<td><p>198</p></td>
+<td><p>78</p></td>
+<td><p>290</p></td>
+<td><p>170</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>31</p></td>
+<td><p>107</p></td>
+<td><p>123</p></td>
+<td><p>199</p></td>
+<td><p>215</p></td>
+<td><p>291</p></td>
+<td><p>307</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>352</p></td>
+<td><p>108</p></td>
+<td><p>76</p></td>
+<td><p>200</p></td>
+<td><p>168</p></td>
+<td><p>292</p></td>
+<td><p>260</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>121</p></td>
+<td><p>109</p></td>
+<td><p>213</p></td>
+<td><p>201</p></td>
+<td><p>305</p></td>
+<td><p>293</p></td>
+<td><p>29</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>74</p></td>
+<td><p>110</p></td>
+<td><p>166</p></td>
+<td><p>202</p></td>
+<td><p>258</p></td>
+<td><p>294</p></td>
+<td><p>350</p></td>
+</tr>
+<tr class="row-odd"><td><p>19</p></td>
+<td><p>211</p></td>
+<td><p>111</p></td>
+<td><p>303</p></td>
+<td><p>203</p></td>
+<td><p>27</p></td>
+<td><p>295</p></td>
+<td><p>119</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>164</p></td>
+<td><p>112</p></td>
+<td><p>256</p></td>
+<td><p>204</p></td>
+<td><p>348</p></td>
+<td><p>296</p></td>
+<td><p>72</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+<td><p>301</p></td>
+<td><p>113</p></td>
+<td><p>25</p></td>
+<td><p>205</p></td>
+<td><p>117</p></td>
+<td><p>297</p></td>
+<td><p>209</p></td>
+</tr>
+<tr class="row-even"><td><p>22</p></td>
+<td><p>254</p></td>
+<td><p>114</p></td>
+<td><p>346</p></td>
+<td><p>206</p></td>
+<td><p>70</p></td>
+<td><p>298</p></td>
+<td><p>162</p></td>
+</tr>
+<tr class="row-odd"><td><p>23</p></td>
+<td><p>23</p></td>
+<td><p>115</p></td>
+<td><p>115</p></td>
+<td><p>207</p></td>
+<td><p>207</p></td>
+<td><p>299</p></td>
+<td><p>299</p></td>
+</tr>
+<tr class="row-even"><td><p>24</p></td>
+<td><p>344</p></td>
+<td><p>116</p></td>
+<td><p>68</p></td>
+<td><p>208</p></td>
+<td><p>160</p></td>
+<td><p>300</p></td>
+<td><p>252</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>113</p></td>
+<td><p>117</p></td>
+<td><p>205</p></td>
+<td><p>209</p></td>
+<td><p>297</p></td>
+<td><p>301</p></td>
+<td><p>21</p></td>
+</tr>
+<tr class="row-even"><td><p>26</p></td>
+<td><p>66</p></td>
+<td><p>118</p></td>
+<td><p>158</p></td>
+<td><p>210</p></td>
+<td><p>250</p></td>
+<td><p>302</p></td>
+<td><p>342</p></td>
+</tr>
+<tr class="row-odd"><td><p>27</p></td>
+<td><p>203</p></td>
+<td><p>119</p></td>
+<td><p>295</p></td>
+<td><p>211</p></td>
+<td><p>19</p></td>
+<td><p>303</p></td>
+<td><p>111</p></td>
+</tr>
+<tr class="row-even"><td><p>28</p></td>
+<td><p>156</p></td>
+<td><p>120</p></td>
+<td><p>248</p></td>
+<td><p>212</p></td>
+<td><p>340</p></td>
+<td><p>304</p></td>
+<td><p>64</p></td>
+</tr>
+<tr class="row-odd"><td><p>29</p></td>
+<td><p>293</p></td>
+<td><p>121</p></td>
+<td><p>17</p></td>
+<td><p>213</p></td>
+<td><p>109</p></td>
+<td><p>305</p></td>
+<td><p>201</p></td>
+</tr>
+<tr class="row-even"><td><p>30</p></td>
+<td><p>246</p></td>
+<td><p>122</p></td>
+<td><p>338</p></td>
+<td><p>214</p></td>
+<td><p>62</p></td>
+<td><p>306</p></td>
+<td><p>154</p></td>
+</tr>
+<tr class="row-odd"><td><p>31</p></td>
+<td><p>15</p></td>
+<td><p>123</p></td>
+<td><p>107</p></td>
+<td><p>215</p></td>
+<td><p>199</p></td>
+<td><p>307</p></td>
+<td><p>291</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>336</p></td>
+<td><p>124</p></td>
+<td><p>60</p></td>
+<td><p>216</p></td>
+<td><p>152</p></td>
+<td><p>308</p></td>
+<td><p>244</p></td>
+</tr>
+<tr class="row-odd"><td><p>33</p></td>
+<td><p>105</p></td>
+<td><p>125</p></td>
+<td><p>197</p></td>
+<td><p>217</p></td>
+<td><p>289</p></td>
+<td><p>309</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-even"><td><p>34</p></td>
+<td><p>58</p></td>
+<td><p>126</p></td>
+<td><p>150</p></td>
+<td><p>218</p></td>
+<td><p>242</p></td>
+<td><p>310</p></td>
+<td><p>334</p></td>
+</tr>
+<tr class="row-odd"><td><p>35</p></td>
+<td><p>195</p></td>
+<td><p>127</p></td>
+<td><p>287</p></td>
+<td><p>219</p></td>
+<td><p>11</p></td>
+<td><p>311</p></td>
+<td><p>103</p></td>
+</tr>
+<tr class="row-even"><td><p>36</p></td>
+<td><p>148</p></td>
+<td><p>128</p></td>
+<td><p>240</p></td>
+<td><p>220</p></td>
+<td><p>332</p></td>
+<td><p>312</p></td>
+<td><p>56</p></td>
+</tr>
+<tr class="row-odd"><td><p>37</p></td>
+<td><p>285</p></td>
+<td><p>129</p></td>
+<td><p>9</p></td>
+<td><p>221</p></td>
+<td><p>101</p></td>
+<td><p>313</p></td>
+<td><p>193</p></td>
+</tr>
+<tr class="row-even"><td><p>38</p></td>
+<td><p>238</p></td>
+<td><p>130</p></td>
+<td><p>330</p></td>
+<td><p>222</p></td>
+<td><p>54</p></td>
+<td><p>314</p></td>
+<td><p>146</p></td>
+</tr>
+<tr class="row-odd"><td><p>39</p></td>
+<td><p>7</p></td>
+<td><p>131</p></td>
+<td><p>99</p></td>
+<td><p>223</p></td>
+<td><p>191</p></td>
+<td><p>315</p></td>
+<td><p>283</p></td>
+</tr>
+<tr class="row-even"><td><p>40</p></td>
+<td><p>328</p></td>
+<td><p>132</p></td>
+<td><p>52</p></td>
+<td><p>224</p></td>
+<td><p>144</p></td>
+<td><p>316</p></td>
+<td><p>236</p></td>
+</tr>
+<tr class="row-odd"><td><p>41</p></td>
+<td><p>97</p></td>
+<td><p>133</p></td>
+<td><p>189</p></td>
+<td><p>225</p></td>
+<td><p>281</p></td>
+<td><p>317</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>42</p></td>
+<td><p>50</p></td>
+<td><p>134</p></td>
+<td><p>142</p></td>
+<td><p>226</p></td>
+<td><p>234</p></td>
+<td><p>318</p></td>
+<td><p>326</p></td>
+</tr>
+<tr class="row-odd"><td><p>43</p></td>
+<td><p>187</p></td>
+<td><p>135</p></td>
+<td><p>279</p></td>
+<td><p>227</p></td>
+<td><p>3</p></td>
+<td><p>319</p></td>
+<td><p>95</p></td>
+</tr>
+<tr class="row-even"><td><p>44</p></td>
+<td><p>140</p></td>
+<td><p>136</p></td>
+<td><p>232</p></td>
+<td><p>228</p></td>
+<td><p>324</p></td>
+<td><p>320</p></td>
+<td><p>48</p></td>
+</tr>
+<tr class="row-odd"><td><p>45</p></td>
+<td><p>277</p></td>
+<td><p>137</p></td>
+<td><p>1</p></td>
+<td><p>229</p></td>
+<td><p>93</p></td>
+<td><p>321</p></td>
+<td><p>185</p></td>
+</tr>
+<tr class="row-even"><td><p>46</p></td>
+<td><p>230</p></td>
+<td><p>138</p></td>
+<td><p>322</p></td>
+<td><p>230</p></td>
+<td><p>46</p></td>
+<td><p>322</p></td>
+<td><p>138</p></td>
+</tr>
+<tr class="row-odd"><td><p>47</p></td>
+<td><p>367</p></td>
+<td><p>139</p></td>
+<td><p>91</p></td>
+<td><p>231</p></td>
+<td><p>183</p></td>
+<td><p>323</p></td>
+<td><p>275</p></td>
+</tr>
+<tr class="row-even"><td><p>48</p></td>
+<td><p>320</p></td>
+<td><p>140</p></td>
+<td><p>44</p></td>
+<td><p>232</p></td>
+<td><p>136</p></td>
+<td><p>324</p></td>
+<td><p>228</p></td>
+</tr>
+<tr class="row-odd"><td><p>49</p></td>
+<td><p>89</p></td>
+<td><p>141</p></td>
+<td><p>181</p></td>
+<td><p>233</p></td>
+<td><p>273</p></td>
+<td><p>325</p></td>
+<td><p>365</p></td>
+</tr>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>42</p></td>
+<td><p>142</p></td>
+<td><p>134</p></td>
+<td><p>234</p></td>
+<td><p>226</p></td>
+<td><p>326</p></td>
+<td><p>318</p></td>
+</tr>
+<tr class="row-odd"><td><p>51</p></td>
+<td><p>179</p></td>
+<td><p>143</p></td>
+<td><p>271</p></td>
+<td><p>235</p></td>
+<td><p>363</p></td>
+<td><p>327</p></td>
+<td><p>87</p></td>
+</tr>
+<tr class="row-even"><td><p>52</p></td>
+<td><p>132</p></td>
+<td><p>144</p></td>
+<td><p>224</p></td>
+<td><p>236</p></td>
+<td><p>316</p></td>
+<td><p>328</p></td>
+<td><p>40</p></td>
+</tr>
+<tr class="row-odd"><td><p>53</p></td>
+<td><p>269</p></td>
+<td><p>145</p></td>
+<td><p>361</p></td>
+<td><p>237</p></td>
+<td><p>85</p></td>
+<td><p>329</p></td>
+<td><p>177</p></td>
+</tr>
+<tr class="row-even"><td><p>54</p></td>
+<td><p>222</p></td>
+<td><p>146</p></td>
+<td><p>314</p></td>
+<td><p>238</p></td>
+<td><p>38</p></td>
+<td><p>330</p></td>
+<td><p>130</p></td>
+</tr>
+<tr class="row-odd"><td><p>55</p></td>
+<td><p>359</p></td>
+<td><p>147</p></td>
+<td><p>83</p></td>
+<td><p>239</p></td>
+<td><p>175</p></td>
+<td><p>331</p></td>
+<td><p>267</p></td>
+</tr>
+<tr class="row-even"><td><p>56</p></td>
+<td><p>312</p></td>
+<td><p>148</p></td>
+<td><p>36</p></td>
+<td><p>240</p></td>
+<td><p>128</p></td>
+<td><p>332</p></td>
+<td><p>220</p></td>
+</tr>
+<tr class="row-odd"><td><p>57</p></td>
+<td><p>81</p></td>
+<td><p>149</p></td>
+<td><p>173</p></td>
+<td><p>241</p></td>
+<td><p>265</p></td>
+<td><p>333</p></td>
+<td><p>357</p></td>
+</tr>
+<tr class="row-even"><td><p>58</p></td>
+<td><p>34</p></td>
+<td><p>150</p></td>
+<td><p>126</p></td>
+<td><p>242</p></td>
+<td><p>218</p></td>
+<td><p>334</p></td>
+<td><p>310</p></td>
+</tr>
+<tr class="row-odd"><td><p>59</p></td>
+<td><p>171</p></td>
+<td><p>151</p></td>
+<td><p>263</p></td>
+<td><p>243</p></td>
+<td><p>355</p></td>
+<td><p>335</p></td>
+<td><p>79</p></td>
+</tr>
+<tr class="row-even"><td><p>60</p></td>
+<td><p>124</p></td>
+<td><p>152</p></td>
+<td><p>216</p></td>
+<td><p>244</p></td>
+<td><p>308</p></td>
+<td><p>336</p></td>
+<td><p>32</p></td>
+</tr>
+<tr class="row-odd"><td><p>61</p></td>
+<td><p>261</p></td>
+<td><p>153</p></td>
+<td><p>353</p></td>
+<td><p>245</p></td>
+<td><p>77</p></td>
+<td><p>337</p></td>
+<td><p>169</p></td>
+</tr>
+<tr class="row-even"><td><p>62</p></td>
+<td><p>214</p></td>
+<td><p>154</p></td>
+<td><p>306</p></td>
+<td><p>246</p></td>
+<td><p>30</p></td>
+<td><p>338</p></td>
+<td><p>122</p></td>
+</tr>
+<tr class="row-odd"><td><p>63</p></td>
+<td><p>351</p></td>
+<td><p>155</p></td>
+<td><p>75</p></td>
+<td><p>247</p></td>
+<td><p>167</p></td>
+<td><p>339</p></td>
+<td><p>259</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>304</p></td>
+<td><p>156</p></td>
+<td><p>28</p></td>
+<td><p>248</p></td>
+<td><p>120</p></td>
+<td><p>340</p></td>
+<td><p>212</p></td>
+</tr>
+<tr class="row-odd"><td><p>65</p></td>
+<td><p>73</p></td>
+<td><p>157</p></td>
+<td><p>165</p></td>
+<td><p>249</p></td>
+<td><p>257</p></td>
+<td><p>341</p></td>
+<td><p>349</p></td>
+</tr>
+<tr class="row-even"><td><p>66</p></td>
+<td><p>26</p></td>
+<td><p>158</p></td>
+<td><p>118</p></td>
+<td><p>250</p></td>
+<td><p>210</p></td>
+<td><p>342</p></td>
+<td><p>302</p></td>
+</tr>
+<tr class="row-odd"><td><p>67</p></td>
+<td><p>163</p></td>
+<td><p>159</p></td>
+<td><p>255</p></td>
+<td><p>251</p></td>
+<td><p>347</p></td>
+<td><p>343</p></td>
+<td><p>71</p></td>
+</tr>
+<tr class="row-even"><td><p>68</p></td>
+<td><p>116</p></td>
+<td><p>160</p></td>
+<td><p>208</p></td>
+<td><p>252</p></td>
+<td><p>300</p></td>
+<td><p>344</p></td>
+<td><p>24</p></td>
+</tr>
+<tr class="row-odd"><td><p>69</p></td>
+<td><p>253</p></td>
+<td><p>161</p></td>
+<td><p>345</p></td>
+<td><p>253</p></td>
+<td><p>69</p></td>
+<td><p>345</p></td>
+<td><p>161</p></td>
+</tr>
+<tr class="row-even"><td><p>70</p></td>
+<td><p>206</p></td>
+<td><p>162</p></td>
+<td><p>298</p></td>
+<td><p>254</p></td>
+<td><p>22</p></td>
+<td><p>346</p></td>
+<td><p>114</p></td>
+</tr>
+<tr class="row-odd"><td><p>71</p></td>
+<td><p>343</p></td>
+<td><p>163</p></td>
+<td><p>67</p></td>
+<td><p>255</p></td>
+<td><p>159</p></td>
+<td><p>347</p></td>
+<td><p>251</p></td>
+</tr>
+<tr class="row-even"><td><p>72</p></td>
+<td><p>296</p></td>
+<td><p>164</p></td>
+<td><p>20</p></td>
+<td><p>256</p></td>
+<td><p>112</p></td>
+<td><p>348</p></td>
+<td><p>204</p></td>
+</tr>
+<tr class="row-odd"><td><p>73</p></td>
+<td><p>65</p></td>
+<td><p>165</p></td>
+<td><p>157</p></td>
+<td><p>257</p></td>
+<td><p>249</p></td>
+<td><p>349</p></td>
+<td><p>341</p></td>
+</tr>
+<tr class="row-even"><td><p>74</p></td>
+<td><p>18</p></td>
+<td><p>166</p></td>
+<td><p>110</p></td>
+<td><p>258</p></td>
+<td><p>202</p></td>
+<td><p>350</p></td>
+<td><p>294</p></td>
+</tr>
+<tr class="row-odd"><td><p>75</p></td>
+<td><p>155</p></td>
+<td><p>167</p></td>
+<td><p>247</p></td>
+<td><p>259</p></td>
+<td><p>339</p></td>
+<td><p>351</p></td>
+<td><p>63</p></td>
+</tr>
+<tr class="row-even"><td><p>76</p></td>
+<td><p>108</p></td>
+<td><p>168</p></td>
+<td><p>200</p></td>
+<td><p>260</p></td>
+<td><p>292</p></td>
+<td><p>352</p></td>
+<td><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>77</p></td>
+<td><p>245</p></td>
+<td><p>169</p></td>
+<td><p>337</p></td>
+<td><p>261</p></td>
+<td><p>61</p></td>
+<td><p>353</p></td>
+<td><p>153</p></td>
+</tr>
+<tr class="row-even"><td><p>78</p></td>
+<td><p>198</p></td>
+<td><p>170</p></td>
+<td><p>290</p></td>
+<td><p>262</p></td>
+<td><p>14</p></td>
+<td><p>354</p></td>
+<td><p>106</p></td>
+</tr>
+<tr class="row-odd"><td><p>79</p></td>
+<td><p>335</p></td>
+<td><p>171</p></td>
+<td><p>59</p></td>
+<td><p>263</p></td>
+<td><p>151</p></td>
+<td><p>355</p></td>
+<td><p>243</p></td>
+</tr>
+<tr class="row-even"><td><p>80</p></td>
+<td><p>288</p></td>
+<td><p>172</p></td>
+<td><p>12</p></td>
+<td><p>264</p></td>
+<td><p>104</p></td>
+<td><p>356</p></td>
+<td><p>196</p></td>
+</tr>
+<tr class="row-odd"><td><p>81</p></td>
+<td><p>57</p></td>
+<td><p>173</p></td>
+<td><p>149</p></td>
+<td><p>265</p></td>
+<td><p>241</p></td>
+<td><p>357</p></td>
+<td><p>333</p></td>
+</tr>
+<tr class="row-even"><td><p>82</p></td>
+<td><p>10</p></td>
+<td><p>174</p></td>
+<td><p>102</p></td>
+<td><p>266</p></td>
+<td><p>194</p></td>
+<td><p>358</p></td>
+<td><p>286</p></td>
+</tr>
+<tr class="row-odd"><td><p>83</p></td>
+<td><p>147</p></td>
+<td><p>175</p></td>
+<td><p>239</p></td>
+<td><p>267</p></td>
+<td><p>331</p></td>
+<td><p>359</p></td>
+<td><p>55</p></td>
+</tr>
+<tr class="row-even"><td><p>84</p></td>
+<td><p>100</p></td>
+<td><p>176</p></td>
+<td><p>192</p></td>
+<td><p>268</p></td>
+<td><p>284</p></td>
+<td><p>360</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>85</p></td>
+<td><p>237</p></td>
+<td><p>177</p></td>
+<td><p>329</p></td>
+<td><p>269</p></td>
+<td><p>53</p></td>
+<td><p>361</p></td>
+<td><p>145</p></td>
+</tr>
+<tr class="row-even"><td><p>86</p></td>
+<td><p>190</p></td>
+<td><p>178</p></td>
+<td><p>282</p></td>
+<td><p>270</p></td>
+<td><p>6</p></td>
+<td><p>362</p></td>
+<td><p>98</p></td>
+</tr>
+<tr class="row-odd"><td><p>87</p></td>
+<td><p>327</p></td>
+<td><p>179</p></td>
+<td><p>51</p></td>
+<td><p>271</p></td>
+<td><p>143</p></td>
+<td><p>363</p></td>
+<td><p>235</p></td>
+</tr>
+<tr class="row-even"><td><p>88</p></td>
+<td><p>280</p></td>
+<td><p>180</p></td>
+<td><p>4</p></td>
+<td><p>272</p></td>
+<td><p>96</p></td>
+<td><p>364</p></td>
+<td><p>188</p></td>
+</tr>
+<tr class="row-odd"><td><p>89</p></td>
+<td><p>49</p></td>
+<td><p>181</p></td>
+<td><p>141</p></td>
+<td><p>273</p></td>
+<td><p>233</p></td>
+<td><p>365</p></td>
+<td><p>325</p></td>
+</tr>
+<tr class="row-even"><td><p>90</p></td>
+<td><p>2</p></td>
+<td><p>182</p></td>
+<td><p>94</p></td>
+<td><p>274</p></td>
+<td><p>186</p></td>
+<td><p>366</p></td>
+<td><p>278</p></td>
+</tr>
+<tr class="row-odd"><td><p>91</p></td>
+<td><p>139</p></td>
+<td><p>183</p></td>
+<td><p>231</p></td>
+<td><p>275</p></td>
+<td><p>323</p></td>
+<td><p>367</p></td>
+<td><p>47</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ip_encapsulation.html" class="btn btn-neutral float-right" title="M17 Internet Protocol (IP) Networking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="decorrelator.html" class="btn btn-neutral float-left" title="Decorrelator sequence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Project M17.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
